@@ -27,17 +27,6 @@ class _LandingState extends State<Landing> {
       Navigator.pushNamedAndRemoveUntil(
           context, '/login', ModalRoute.withName('/login'));
     }
-    // else {
-    //   RespostaApi _respostaApi = await getUserDetails(_userId);
-    //   if ((_respostaApi.ErroApi as ErroApi) == null) {
-    //     Navigator.pushNamedAndRemoveUntil(
-    //         context, '/home', ModalRoute.withName('/home'),
-    //         arguments: (_respostaApi.Data as Usuario));
-    //   } else {
-    //     Navigator.pushNamedAndRemoveUntil(
-    //         context, '/login', ModalRoute.withName('/login'));
-    //   }
-    // }
   }
 
   @override

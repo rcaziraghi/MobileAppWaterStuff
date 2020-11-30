@@ -9,12 +9,12 @@ class ErroApi {
   set erro(String erro) => _erro = erro;
 
   ErroApi.fromJson(Map<String, dynamic> json) {
-    _erro = json['error'];
+    _erro = json['message'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['error'] = this._erro;
+    data['message'] = this._erro;
     return data;
   }
 }
