@@ -14,7 +14,7 @@ class Usuario {
    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwiaWF0IjoxNjA2Njg3NDg4LCJleHAiOjE2MDY3NzM4ODh9.DHfJc99X18wiqXUKJT_o-XzLVgXg6AEvmUOhEelbVDo"
 }
   */
-  String _id;
+  int _id;
   String _email;
   String _nomeCompleto;
   String _cidade;
@@ -23,7 +23,7 @@ class Usuario {
   String _accessToken;
 
   constructorUsuario(
-      {String id,
+      {int id,
       String email,
       String nomeCompleto,
       String cidade,
@@ -40,8 +40,8 @@ class Usuario {
   }
 
   // Properties
-  String get id => _id;
-  set id(String id) => _id = id;
+  int get id => _id;
+  set id(int id) => _id = id;
 
   String get email => _email;
   set email(String email) => _email = email;

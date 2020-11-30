@@ -22,11 +22,34 @@ class _LoginState extends State<Login> {
     String _senha;
     final _formKey = GlobalKey<FormState>();
 
+    alertDialog(BuildContext context, String titulo, String texto) {
+      // This is the ok button
+      Widget ok = FlatButton(
+        child: Text("Ok"),
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+      );
+      // show the alert dialog
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(titulo),
+            content: Text(texto),
+            actions: [
+              ok,
+            ],
+            elevation: 5,
+          );
+        },
+      );
+    }
+
     void _handleSubmitted() async {
       final FormState form = _formKey.currentState;
       if (!form.validate()) {
-        Scaffold.of(context).showSnackBar(
-            new SnackBar(content: new Text('Favor verificar os erros.')));
+        alertDialog(context, "Erro", "Favor verificar todos os campos.");
       } else {
         form.save();
         var _respostaApi = await login(_email, _senha);
@@ -38,8 +61,7 @@ class _LoginState extends State<Login> {
               context, '/home', ModalRoute.withName('/home'),
               arguments: (_respostaApi.Data as Usuario));
         } else {
-          Scaffold.of(context).showSnackBar(new SnackBar(
-              content: new Text(((_respostaApi.ErroApi as ErroApi).erro))));
+          alertDialog(context, "Erro", (_respostaApi.ErroApi as ErroApi).erro);
         }
       }
     }
